@@ -36,8 +36,32 @@ setInterval(() => {
     goomba.style.display = "";
   }
 
-  if (goombaLeft < 50 && goombaLeft > 0 && marioTop > 35) {
+  if (goombaLeft < 50 && goombaLeft > 0 && marioTop > 10) {
     alert(`Game Over, you run ${score.innerText} meters `);
     location.reload();
   }
 }, 50);
+function watch() {
+  const today = new Date();
+  let hour = today.getHours();
+  let minutes = today.getMinutes();
+  let seconds = today.getSeconds();
+  let day = today.getDate();
+  let month = today.getMonth();
+  month++;
+  minutes = checkTime(minutes);
+  seconds = checkTime(seconds);
+
+  document.getElementById("timer").innerHTML = `
+    Time ${hour}:${minutes}:${seconds}`;
+  setTimeout(watch, 1000);
+}
+
+function checkTime(i) {
+  // to add a zero in front of minutes and seconds
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
+watch();

@@ -125,7 +125,7 @@ h3 {
   height: 45px;
   width: 45px;
   position: relative;
-  top: 40px;
+  top: 23px;
   background-image: url("img/mario.webp");
   background-size: cover;
 }
@@ -133,7 +133,7 @@ h3 {
   height: 15px;
   width: 15px;
   position: relative;
-  top: 22px;
+  top: 8px;
   left: 220px;
   background-image: url("img/goomba.gif");
   background-size: cover;
@@ -152,16 +152,16 @@ h3 {
 }
 @keyframes jump {
   0% {
-    top: 35px;
+    top: 0px;
   }
   50% {
-    top: 10px;
+    top: 0px;
   }
   75% {
     top: 10px;
   }
   100% {
-    top: 25;
+    top: 15;
   }
 }
 .time {
