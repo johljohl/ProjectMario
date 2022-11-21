@@ -1,6 +1,7 @@
 const mario = document.getElementById("mario");
 const goomba = document.getElementById("goomba");
 const score = document.getElementById("score");
+const norrisJoke = document.getElementById("gameover");
 
 let mySound = new Audio("sound/mariojump.mp3");
 
@@ -35,12 +36,8 @@ setInterval(() => {
     goomba.style.display = "";
   }
 
-  if (goombaLeft < 50 && goombaLeft > 0 && marioTop > 150) {
-    alert(
-      "Game Over man, game over!! \n\nYour score was: " +
-        score.innerText +
-        "\n\nPress a key to play again!"
-    );
+  if (goombaLeft < 50 && goombaLeft > 0 && marioTop > 35) {
+    alert(`Game Over, you run ${score.innerText} meters `);
     location.reload();
   }
 }, 50);
