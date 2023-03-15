@@ -39,7 +39,16 @@ setInterval(() => {
     goomba.style.display = "";
   }
 
-  if (goombaLeft < 50 && goombaLeft > 0 && marioTop > 10) {
+  const marioRect = mario.getBoundingClientRect();
+  const goombaRect = goomba.getBoundingClientRect();
+
+  const isColliding =
+    marioRect.left < goombaRect.right &&
+    marioRect.right > goombaRect.left &&
+    marioRect.top < goombaRect.bottom &&
+    marioRect.bottom > goombaRect.top;
+
+  if (isColliding) {
     myMusic.pause();
     gameOver.classList.remove("hidden");
     finalScore.innerText = `You ran ${score.innerText} meters`;
@@ -53,6 +62,7 @@ setInterval(() => {
 restartBtn.addEventListener("click", function () {
   location.reload();
 });
+
 function watch() {
   const today = new Date();
   let hour = today.getHours();
