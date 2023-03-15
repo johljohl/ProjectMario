@@ -122,24 +122,27 @@ h3 {
 }
 
 #mario {
-  height: 45px;
-  width: 45px;
-  position: relative;
-  top: 23px;
+  position: absolute;
+  left: 5px;
+  top: 118px;
+  width: 50px;
+  height: 50px;
   background-image: url("img/mario.webp");
   background-size: cover;
+  will-change: transform; /* Lägg till denna rad */
 }
 #goomba {
-  height: 15px;
+  position: absolute;
+  right: 0;
+  top: 150px; /* Ändra detta värde för att justera Goombas höjd */
   width: 15px;
-  position: relative;
-  top: 8px;
-  left: 220px;
+  height: 15px;
   background-image: url("img/goomba.gif");
   background-size: cover;
-  animation: goomba 4s infinite;
+  animation: moveGoomba 2s linear infinite;
+  transform: translateX(0);
 }
-@keyframes goomba {
+@keyframes moveGoomba {
   0% {
     left: 250px;
   }
@@ -148,22 +151,23 @@ h3 {
   }
 }
 .jump {
-  animation: jump 0.5s;
+  animation: jump 0.7s;
+  animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  transform: translateY(0);
 }
+
 @keyframes jump {
-  0% {
-    top: 0px;
+  0%,
+  100% {
+    transform: translateY(0);
   }
   50% {
-    top: 0px;
-  }
-  75% {
-    top: 10px;
-  }
-  100% {
-    top: 15;
+    transform: translateY(
+      -80px
+    ); /* Justera detta värde för att ändra hoppets höjd */
   }
 }
+
 .time {
   font-family: "DS-Digital", sans-serif;
 
@@ -177,4 +181,22 @@ h3 {
   to {
     background-position: -230px;
   }
+}
+.game-over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
 }

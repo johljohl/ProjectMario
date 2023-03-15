@@ -1,7 +1,9 @@
 const mario = document.getElementById("mario");
 const goomba = document.getElementById("goomba");
 const score = document.getElementById("score");
-const norrisJoke = document.getElementById("gameover");
+const gameOver = document.getElementById("game-over");
+const finalScore = document.getElementById("final-score");
+const restartBtn = document.getElementById("restart-btn");
 
 let mySound = new Audio("sound/mariojump.mp3");
 
@@ -11,8 +13,9 @@ function jump() {
   mario.classList.add("jump");
   setTimeout(() => {
     mario.classList.remove("jump");
-  }, 500);
+  }, 1000);
 }
+
 document.addEventListener("click", function (event) {
   if (!mario.classList.contains("jump")) {
     jump();
@@ -37,10 +40,19 @@ setInterval(() => {
   }
 
   if (goombaLeft < 50 && goombaLeft > 0 && marioTop > 10) {
-    alert(`Game Over, you run ${score.innerText} meters `);
-    location.reload();
+    myMusic.pause();
+    gameOver.classList.remove("hidden");
+    finalScore.innerText = `You ran ${score.innerText} meters`;
+  } else {
+    setTimeout(() => {
+      score.innerText++;
+    }, 50);
   }
 }, 50);
+
+restartBtn.addEventListener("click", function () {
+  location.reload();
+});
 function watch() {
   const today = new Date();
   let hour = today.getHours();
